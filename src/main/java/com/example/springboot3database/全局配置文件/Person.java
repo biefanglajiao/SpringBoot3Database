@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Author: 常兆海
- * @Description:
+ * @Description: 配置文件注入属性。
  * @DateTime: 2023/4/20 17:19
  **/
 @Component
