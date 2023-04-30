@@ -1,4 +1,4 @@
-package com.example.springboot3database.integrationMybatis.controler;
+package com.example.springboot3database.springMVC的整合.controler;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
