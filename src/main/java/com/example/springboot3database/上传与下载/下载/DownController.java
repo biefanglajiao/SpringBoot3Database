@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ public class DownController {
         return "down";
     }
     @GetMapping("/download")
-    public ResponseEntity<byte[]> download(String id){
+    public ResponseEntity<byte[]> download(String id) throws UnsupportedEncodingException {
         return filtersService.findById(id);
     }
 }

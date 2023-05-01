@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.UUID;
 
@@ -69,12 +71,13 @@ public class FiltersService {
     }
 
 
-    public ResponseEntity<byte[]> findById(String id) {
+    public ResponseEntity<byte[]> findById(String id) throws UnsupportedEncodingException {
         Filters a= (Filters) filtersRepository.findById(id);
         byte[] bytes = a.getFilter();
+        String codeid=URLEncoder.encode(id, StandardCharsets.UTF_8.toString());
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentDispositionFormData("attachment", id);
+        headers.setContentDispositionFormData("attachment", codeid);
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-     return ResponseEntity.ok().header("Content-Disposition", "attachment; filename=" + id).body(bytes);
+     return ResponseEntity.ok().header("Content-Disposition", "attachment; filename=" + codeid).body(bytes);
     }
 }
