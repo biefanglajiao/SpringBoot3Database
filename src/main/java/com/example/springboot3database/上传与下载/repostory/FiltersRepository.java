@@ -15,5 +15,6 @@ import java.util.List;
  **/
 public interface FiltersRepository extends JpaRepository<Filters,Integer> {
 
-
+@Query("select c from t_filters c where c.id=?1")
+    Object findById(String id);
 }

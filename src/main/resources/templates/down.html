@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<script th:src="@{/js/jquery.min.js}"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div STYLE="margin-bottom: auto">文件下载列表</div>
+
+<h1>列表数据展示</h1>
+
+<!--    <div th:each="data : ${all}" th:text="${data.id}" >-->
+<!--        <a type="button" value="下载" th:href="@{/download(id=${data.id})}">下载</a>-->
+
+<!--    </div>-->
+<div th:each="data : ${all}">
+    <a type="button" value="下载" th:href="@{/download(id=${data.id})}" th:text="${data.id}" href="${data.id}">下载</a>
+</div>
+</body>
+</html>
+<script>
+</script>

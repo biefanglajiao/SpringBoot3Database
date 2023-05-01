@@ -3,10 +3,14 @@ package com.example.springboot3database.上传与下载.service;
 import com.example.springboot3database.上传与下载.domain.Filters;
 import com.example.springboot3database.上传与下载.repostory.FiltersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -60,8 +64,17 @@ public class FiltersService {
  return true;
     }
 
+    public List<Filters> findAll(){
+        return filtersRepository.findAll();
+    }
 
 
-
-
+    public ResponseEntity<byte[]> findById(String id) {
+        Filters a= (Filters) filtersRepository.findById(id);
+        byte[] bytes = a.getFilter();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentDispositionFormData("attachment", id);
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+     return ResponseEntity.ok().header("Content-Disposition", "attachment; filename=" + id).body(bytes);
+    }
 }
