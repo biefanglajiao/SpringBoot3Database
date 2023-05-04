@@ -3,8 +3,9 @@ package com.example.springboot3database;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
-
+@EnableCaching//开启缓存
 @ServletComponentScan//扫描Servlet三大件的注解 不添加 扫描不到注解形式的三大件
 @SpringBootApplication
 public class SpringBoot3DatabaseApplication {
